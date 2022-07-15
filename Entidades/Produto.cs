@@ -18,7 +18,7 @@ namespace SistemaVendas.Entidades
 
         public Categoria Categoria { get; set; }
 
-        public ICollection<Venda> Vendas { get; set; }
+        public ICollection<VendaProdutos> Vendas { get; set; }
 
     }
 }
