@@ -1,0 +1,6 @@
+﻿namespace SistemaVendas.Helpers
+{
+    public class texto
+    {
+    }
+}
