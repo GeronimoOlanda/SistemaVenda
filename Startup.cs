@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SistemaVendas.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +26,16 @@ namespace SistemaVendas
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
+
+            });
+            //estamos dizendo para o dbcontext usar o banco de dado sql server
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Estoque;Trusted_Connection=True;MultipleActiveResultSets=true"));  // esta pedindo o tipo da classe responsavel pelo contexto de banco de dados da aplicação
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();//permite criar sessao, e trabalhar com sessao em geral, precisamos injetar esse serviço
+            services.AddSession(); //permite trabalhar com sessao
             services.AddControllersWithViews();
         }
 

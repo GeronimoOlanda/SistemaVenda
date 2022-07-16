@@ -13,6 +13,9 @@ namespace SistemaVendas.DAL
         public DbSet<Venda> Venda { get; set; }
         public DbSet<VendaProdutos> VendaProdutos { get; set; }
 
+        //setando a classe construtora obrigatoria, onde estamos pssando a nossa classe dalm e setano o dbContext dela
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+
         //especificando o tipo da nossa entidade
 
         //override vamos sobrescrever o nosso metodo
