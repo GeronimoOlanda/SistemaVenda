@@ -29,11 +29,47 @@ namespace SistemaVendas.Controllers
 
         public IActionResult Index()
         {
+            return View();
+
+            /*
+                * Removendo um Objeto do banco
+                Categoria objCategoria = Repositorio.Categoria.Where(x => x.Codigo == 1).FirstOrDefault();
+                Repositorio.Attach(objCategoria);
+                Repositorio.Remove(objCategoria);
+                Repositorio.SaveChanges();
+                return View();
+            */
+
+
+            /*
+             * Fazendo a alteração de um registro da base de dados
+                //nao podemos jogar uma lista para um objeto simples, temos que transformar a lista em objeto simples, conseguimos no nosso caso usando FirstOrDefault
+                Categoria objCategoria = Repositorio.Categoria.Where(x => x.Codigo == 1).FirstOrDefault();
+                objCategoria.Descricao = "Bebidas";
+                Repositorio.Entry(objCategoria).State = Microsoft.EntityFrameworkCore.EntityState.Modified; //modificando um objeto
+                Repositorio.SaveChanges();
+            */
+
+            /*
+             adicionando um registro em categorias
+            Categoria categoria = new Categoria()
+            {
+                Descricao = "Teste"
+            };
+            Repositorio.Categoria.Add(categoria);//esta adicionando um objeto do tipo categoria
+
+            Repositorio.SaveChanges();
+            */
+
+            /*
+             *Listando na nossa view Home 
+             
             //trabalhar com tipo generico e mais flexibilidade
             IEnumerable<Categoria> lista = Repositorio.Categoria.ToList();
-            return View(lista);
+           
+            */
         }
-         
+
         public IActionResult Privacy()
         {
             return View();
