@@ -1,4 +1,4 @@
 ﻿DAL = DATA ACCESS LAYER, camada responsavel por fazer o acesso aos dados
 
 criaremos aqui uma classe que vai usar o entity framework e importar a biblioteca do entity e seta o contexto e  fara toda as persistencia de dados da nosa entidade
-criar endpoint usando padrao SOLID
+criar endpoint usando padrao SOLID.
